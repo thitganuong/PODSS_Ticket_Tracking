@@ -31,36 +31,38 @@
         <h3>ĐỊNH VỊ BƯU GỬI</h3>
     </div>
     <div data-role="content">
-        <div data-role="fieldcontain" class="txt_SearchTicketID">
+        <div data-role="fieldcontain" class="txt_SearchTicketID" style="margin-top:-5% !important">
             <input name="address" id="address" placeholder="" value="" type="search">
         </div>
         <input type="button" id="getLocation" onclick="addMarkerForAddress()" value="Tra bưu kiện"/>
-        <div id="map" style="width:93%; height:35%; position: absolute;"></div>
-        <ul id="listView" data-role="listview" data-divider-theme="b" data-inset="true" style="margin-top: 62%;">
+        <div id="map" style="width:92%; height:35%; position: absolute;"></div>
+        <ul id="listView" data-role="listview" data-divider-theme="b" data-inset="true" style="margin-top: 73%;">
             <li data-role="list-divider" role="heading">Thông tin bưu gửi</li>
             <li data-theme="c">
+            	<div style="margin-left:5%; float:left">3:05:00AM</div><div style="margin-left:4%">~ 5/06/2013</div>
                 <a href="#page1" data-transition="slide">
-                    Button item 1
+						Nhận hàng tại Cây trâm Gò vấp
                     <span class="ui-li-count">Mới tạo</span>
                 </a>
             </li>
             <li data-theme="c">
-                <a href="#page1" data-transition="slide">
-                    Button item 2
+                <div style="margin-left:5%; float:left">3:25:00AM</div><div style="margin-left:4%">~ 5/06/2013</div>
+                <a href="#page1" data-transition="slide" style="width:20%; word-wrap: break-word;display: -webkit-box;-webkit-line-clamp: 2;" >
+						Giao hàng tại Cây Khế Gò vấp
                     <span class="ui-li-count">Đã giao</span>
                 </a>
             </li>
         </ul>
-        <div id="tabBar" data-role="navbar" data-iconpos="right"style="margin-top:30%">
+        <div id="tabBar" data-role="navbar" data-iconpos="right" style="position:absolute;bottom:0; width: 93%">
             <ul>
                 <li>
                     <a href="#page1" data-transition="fade" data-theme="b" data-icon="" class="ui-btn-active ui-state-persist">
-                        Xem bản đồ
+                        Xem Bản Đồ
                     </a>
                 </li>
                 <li>
                     <a href="#page1" data-transition="fade" data-theme="b" data-icon="">
-                        Khách hàng
+                        Thông Tin KH
                     </a>
                 </li>
             </ul>
