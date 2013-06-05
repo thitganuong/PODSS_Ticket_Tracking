@@ -11,12 +11,12 @@
       body { height: 100%; margin: 0; padding: 0 }
       #map_canvas { height: 100% }
     </style>
-  <link rel="stylesheet" href="https://d10ajoocuyu32n.cloudfront.net/mobile/1.3.1/jquery.mobile-1.3.1.min.css">
+  <link rel="stylesheet" href="style/jquery.mobile-1.3.1.min.css">
   
   <script type="text/javascript" charset="utf-8" src="libs/cordova-2.7.0.js"></script>
   <!-- jQuery and jQuery Mobile -->
-  <script src="https://d10ajoocuyu32n.cloudfront.net/jquery-1.9.1.min.js"></script>
-  <script src="https://d10ajoocuyu32n.cloudfront.net/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+  <script src="libs/jquery-1.9.1.min.js"></script>
+  <script src="libs/jquery.mobile-1.3.1.min.js"></script>
 
    <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
     <script type="text/javascript" charset="utf-8" src="src/main.js"></script>
@@ -31,12 +31,12 @@
         <h3>ĐỊNH VỊ BƯU GỬI</h3>
     </div>
     <div data-role="content">
-        <div data-role="fieldcontain" class="txt_SearchTicketID" style="margin-top:-5% !important">
+        <div data-role="fieldcontain" class="txt_SearchTicketID"">
             <input name="address" id="address" placeholder="" value="" type="search">
         </div>
         <input type="button" id="getLocation" onclick="addMarkerForAddress()" value="Tra bưu kiện"/>
-        <div id="map" style="width:92%; height:35%; position: absolute;"></div>
-        <ul id="listView" data-role="listview" data-divider-theme="b" data-inset="true" style="margin-top: 73%;">
+        <div id="map" style="width:100%; height:35%; position: absolute;"></div>
+        <ul id="listView" data-role="listview" data-divider-theme="b" data-inset="true" style="margin-top: 63%;">
             <li data-role="list-divider" role="heading">Thông tin bưu gửi</li>
             <li data-theme="c">
             	<div style="margin-left:5%; float:left">3:05:00AM</div><div style="margin-left:4%">~ 5/06/2013</div>
@@ -53,7 +53,7 @@
                 </a>
             </li>
         </ul>
-        <div id="tabBar" data-role="navbar" data-iconpos="right" style="position:absolute;bottom:0; width: 93%">
+        <div id="tabBar" data-role="navbar" data-iconpos="right" style="position:absolute;bottom:0; width: 100%">
             <ul>
                 <li>
                     <a href="#page1" data-transition="fade" data-theme="b" data-icon="" class="ui-btn-active ui-state-persist">
