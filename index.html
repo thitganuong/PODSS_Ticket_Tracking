@@ -35,8 +35,8 @@
             <input name="address" id="address" placeholder="" value="" type="search">
         </div>
         <input type="button" id="getLocation" onclick="addMarkerForAddress()" value="Tra bưu kiện"/>
-        <div id="map" style="width:100%; height:35%; position: absolute;"></div>
-        <ul id="listView" data-role="listview" data-divider-theme="b" data-inset="true" style="margin-top: 63%;">
+        <div id="map" style="width:100%; height:30%; position: absolute;"></div>
+        <ul id="listView" data-role="listview" data-divider-theme="b" data-inset="true" style="margin-top: 55%;">
             <li data-role="list-divider" role="heading">Thông tin bưu gửi</li>
             <li data-theme="c">
             	<div style="margin-left:5%; float:left">3:05:00AM</div><div style="margin-left:4%">~ 5/06/2013</div>
@@ -47,7 +47,14 @@
             </li>
             <li data-theme="c">
                 <div style="margin-left:5%; float:left">3:25:00AM</div><div style="margin-left:4%">~ 5/06/2013</div>
-                <a href="#page1" data-transition="slide" style="width:20%; word-wrap: break-word;display: -webkit-box;-webkit-line-clamp: 2;" >
+                <a href="#page1" data-transition="slide" >
+						Giao hàng tại Cây Khế Gò vấp
+                    <span class="ui-li-count">Đã giao</span>
+                </a>
+            </li>
+            <li data-theme="c">
+                <div style="margin-left:5%; float:left">3:25:00AM</div><div style="margin-left:4%">~ 5/06/2013</div>
+                <a href="#page1" data-transition="slide" >
 						Giao hàng tại Cây Khế Gò vấp
                     <span class="ui-li-count">Đã giao</span>
                 </a>
