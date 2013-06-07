@@ -2967,6 +2967,18 @@ scale
 	zoom: 1
 }
 
+.ui-btn-innerListItem {
+	font-size: 7px;
+	padding: .6em 20px;
+	min-width: .75em;
+	display: block;
+	position: relative;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	zoom: 1
+}
+
 .ui-btn input,.ui-btn button {
 	z-index: 2
 }
