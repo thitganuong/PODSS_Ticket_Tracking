@@ -3847,7 +3847,7 @@ label.ui-submit {
 }
 
 .ui-field-contain,fieldset.ui-field-contain {
-	padding: .8em 0;
+	padding: .3em 0;
 	margin: 0;
 	border-width: 0 0 1px;
 	overflow: visible
