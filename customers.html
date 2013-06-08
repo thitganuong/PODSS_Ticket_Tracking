@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <title></title>
+  <style type="text/css">
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 0 }
+      #map_canvas { height: 100% }
+	    </style>
+	<link rel="stylesheet" href="style/jquery.mobile-1.3.1.min.css">
+	<link rel="stylesheet" href="style/jquery.mobile.iscrollview.css"/>
+    <link rel="stylesheet" href="style/jquery.mobile.iscrollview-pull.css"/>
+	
+	
+	<script type="text/javascript" charset="utf-8"src="libs/cordova-2.7.0.js"></script>
+	<!-- jQuery and jQuery Mobile -->
+	<script src="libs/jquery-1.9.1.min.js"></script>
+	<script src="libs/jquery.mobile-1.3.1.min.js"></script>
+	 <script src="libs/iscroll.js"></script>
+    <script src="libs/jquery.mobile.iscrollview.js"></script>
+	
+	<script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+	<script type="text/javascript" charset="utf-8" src="src/main.js"></script>
+	<script type="text/javascript" charset="utf-8">
+		google.maps.event.addDomListener(window, 'load', displayCurrentLocation);
+	</script>
+</head>
+<body>
+<!-- Home -->
+<div data-role="page" id="page2" data-iscroll="enable">
+    <div id="header1" data-theme="b" data-role="header" data-position="fixed">
+        <h3>ĐỊNH VỊ BƯU GỬI</h3>
+    </div>
+		       <ul id="listView" data-role="listview" data-divider-theme="b" data-inset="true" style="margin-top: 5%" >
+		            <li data-role="list-divider" role="heading">Thông tin bưu gửi</li>
+		            <li data-theme="c">
+		            	<div style="margin-left:5%; float:left">3:05:00AM</div><div style="margin-left:4%">~ 5/06/2013</div>
+		                <a href="#page1" data-transition="slide">
+								Nhận hàng tại Cây trâm Gò vấp
+		                    <span class="ui-li-count">Mới tạo</span>
+		                </a>
+		            </li>
+		            <li data-theme="c">
+		                <div style="margin-left:5%; float:left">3:25:00AM</div><div style="margin-left:4%">~ 5/06/2013</div>
+		                <a href="#page1" data-transition="slide" >
+								Giao hàng tại Cây Khế Gò vấp
+		                    <span class="ui-li-count">Đã giao</span>
+		                </a>
+		            </li>
+		        </ul>
+      </div>
+      
+        <div id="footer"data-id="footer" data-position="fixed" data-role="footer"  data-transition="flip">
+        <div data-role="navbar">
+          <ul>
+               <li>
+              <a class="fastclick ui-btn-active ui-state-persist"  data-theme="b" href="index.html" data-ajax="false" data-href="index.html"data-transition="pop">Xem bản đồ </a>
+            </li>
+            <li>
+              <a class="fastclick" data-theme="b" data-ajax="false" href="customers.html" data-href="customers.html" data-transition="pop">Thông tin KH </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+</body>
+</html>
