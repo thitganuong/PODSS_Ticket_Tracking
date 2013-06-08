@@ -31,40 +31,46 @@
 </head>
 <body>
 <!-- Home -->
-<div data-role="page" id="page2" data-iscroll="enable">
-    <div id="header1" data-theme="b" data-role="header" data-position="fixed">
+<div data-role="page" id="page2">
+    <div id="header" data-theme="b" data-role="header" data-position="fixed">
         <h3>ĐỊNH VỊ BƯU GỬI</h3>
     </div>
+    <div data-role="content">
+    
 		       <ul id="listView" data-role="listview" data-divider-theme="b" data-inset="true" style="margin-top: 5%" >
-		            <li data-role="list-divider" role="heading">Thông tin bưu gửi</li>
+		            <li data-role="list-divider" role="heading">Thông tin khách hàng gửi</li>
 		            <li data-theme="c">
-		            	<div style="margin-left:5%; float:left">3:05:00AM</div><div style="margin-left:4%">~ 5/06/2013</div>
-		                <a href="#page1" data-transition="slide">
-								Nhận hàng tại Cây trâm Gò vấp
-		                    <span class="ui-li-count">Mới tạo</span>
-		                </a>
-		            </li>
-		            <li data-theme="c">
-		                <div style="margin-left:5%; float:left">3:25:00AM</div><div style="margin-left:4%">~ 5/06/2013</div>
-		                <a href="#page1" data-transition="slide" >
-								Giao hàng tại Cây Khế Gò vấp
-		                    <span class="ui-li-count">Đã giao</span>
-		                </a>
+		            	<div><h2>Tên: Nguyễn Thanh Hải</h2></div>
+		            	<div><h2>Địa chỉ: quận gò vấp</h2></div>
+		            	<div><h2>Điện thoại: 0933557706</h2></div> <br>
+		            	<div><h2>Số hiệu bưu kiện: CP950141884VN</h2></div>
 		            </li>
 		        </ul>
-      </div>
-      
-        <div id="footer"data-id="footer" data-position="fixed" data-role="footer"  data-transition="flip">
+		        
+		        <ul id="listView" data-role="listview" data-divider-theme="b" data-inset="true" style="margin-top: 5%" >
+		            <li data-role="list-divider" role="heading">Thông tin khách hàng nhận</li>
+		            <li data-theme="c">
+		            	<div><h2>Tên: Nguyễn Trung Kiên</h2></div>
+		            	<div><h2>Địa chỉ: quận 10</h2></div>
+		            	<div><h2>Điện thoại: 0933557706</h2></div><br>
+		            	<div><h2>Khối lượng bưu kiện: 300gram</h2></div>
+		            </li>
+		        </ul>
+	</div>
+	
+    <div id="footer"data-id="footer" data-position="fixed" data-role="footer"  data-transition="pop">
         <div data-role="navbar">
           <ul>
                <li>
-              <a class="fastclick ui-btn-active ui-state-persist"  data-theme="b" href="index.html" data-ajax="false" data-href="index.html"data-transition="pop">Xem bản đồ </a>
+              <a class="fastclick"  data-theme="b" href="index.html" data-ajax="false" data-href="index.html"data-transition="pop">Xem bản đồ </a>
             </li>
             <li>
-              <a class="fastclick" data-theme="b" data-ajax="false" href="customers.html" data-href="customers.html" data-transition="pop">Thông tin KH </a>
+              <a class="fastclick ui-btn-active ui-state-persist " data-theme="b" data-ajax="false" href="customers.html" data-href="customers.html" data-transition="pop">Thông tin KH </a>
             </li>
           </ul>
         </div>
       </div>
+      
+   </div>
 </body>
 </html>
