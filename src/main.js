@@ -128,9 +128,9 @@ function test(){
 	if(searchToggle){
 		switch (turnOn) {
 		case true:
-			searchToggle.find('.ui-btn-text').text('Mở');
+			searchToggle.find('.ui-btn-text').text('Bật');
 				$('#searchBox').show('fast');
-//				$('#map').height($('#page1').height()*0.42);
+//				$('#map').height($('#page1').height()*0.42); 
 //				alert(defaultSearchBoxHeight);
 //				alert(defaultMapHeight);
 				turnOn = false;
@@ -141,7 +141,7 @@ function test(){
 //				alert(defaultSearchBoxHeight);
 //				alert(defaultMapHeight);
 //				$('#map').height($('#page1').height()/2);
-			turnOn = true;
+			turnOn = true; 
 			break;　
 
 		default:
