@@ -130,7 +130,7 @@ function test(){
 		case true:
 			searchToggle.find('.ui-btn-text').text('Mở');
 				$('#searchBox').show('fast');
-				$('#map').height($('#page1').height()*0.42);
+//				$('#map').height($('#page1').height()*0.42);
 //				alert(defaultSearchBoxHeight);
 //				alert(defaultMapHeight);
 				turnOn = false;
@@ -140,7 +140,7 @@ function test(){
 				$('#searchBox').hide('fast');
 //				alert(defaultSearchBoxHeight);
 //				alert(defaultMapHeight);
-				$('#map').height($('#page1').height()/2);
+//				$('#map').height($('#page1').height()/2);
 			turnOn = true;
 			break;　
 
