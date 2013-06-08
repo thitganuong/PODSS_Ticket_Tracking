@@ -128,16 +128,19 @@ function test(){
 		case true:
 			searchToggle.find('.ui-btn-text').text('Bật');
 				$('#searchBox').show('fast');
+//				$('#listView').slideUp('fast',function() {
+//					$('#listView').show();
+//				  });
+//				
 				$('#map').height($('#map').height() - defaultSearchBoxHeight); 
-//				alert(defaultSearchBoxHeight);
-//				alert(defaultMapHeight);
 				turnOn = false;
 			break;
 		case false:
 			searchToggle.find('.ui-btn-text').text('Tắt');
 				$('#searchBox').hide('fast');
-//				alert(defaultSearchBoxHeight);
-//				alert(defaultMapHeight);
+//				$('#listView').slideDown('fast',function() {
+//					$('#listView').hide();
+//				  });
 				$('#map').height($('#map').height() + defaultSearchBoxHeight);
 			turnOn = true; 
 			break;　
