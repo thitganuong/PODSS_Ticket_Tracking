@@ -113,4 +113,41 @@ function addMarkerForAddress() {
 	console.log("Exiting addMarkerForAddress()");
 }
 //google.maps.event.addDomListener(window, 'load', displayCurrentLocation);
+//$('#p1').live('pagecreate', function(e){
+//    $("#searchToggle").click(function(e) {
+//        alert("hiihihih");
+//    });
+//});
+
+var turnOn = false;
+function test(){
+	var searchToggle = $('#searchToggle');
+	var defaultSearchBoxHeight = $('#searchBox').height();
+	var defaultMapHeight = $('#map').height();
+	var mapExtendedHeight = defaultSearchBoxHeight + defaultMapHeight;
+	if(searchToggle){
+		switch (turnOn) {
+		case true:
+			searchToggle.find('.ui-btn-text').text('Mở');
+				$('#searchBox').show('fast');
+				$('#map').height($('#page1').height()*0.42);
+//				alert(defaultSearchBoxHeight);
+//				alert(defaultMapHeight);
+				turnOn = false;
+			break;
+		case false:
+			searchToggle.find('.ui-btn-text').text('Tắt');
+				$('#searchBox').hide('fast');
+//				alert(defaultSearchBoxHeight);
+//				alert(defaultMapHeight);
+				$('#map').height($('#page1').height()/2);
+			turnOn = true;
+			break;　
+
+		default:
+			break;
+		}
+	}
+}
+
 
