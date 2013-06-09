@@ -22,6 +22,16 @@
     access elements control the Android whitelist.
     Domains are assumed blocked unless set otherwise
      -->
+     
+     <name>Package Tracking</name>
+
+    <description>
+        This is a mobile application used for tracking customers's package through PODSS.
+    </description>
+
+    <author href="http://www.facebook.com/HaiNguyen.MobileDeveloper" email="androidcoder.vn@gmail.com">
+        Nguyễn Thanh Hải
+	</author>
 
     <access origin="http://127.0.0.1*"/> <!-- allow local pages -->
 
