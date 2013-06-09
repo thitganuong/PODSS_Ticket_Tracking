@@ -18,17 +18,24 @@
 var map;
 function displayCurrentLocation() {
 	console.log("Entering displayCurrentLocation()");
-
+	
 	try {
 		var currentLocationLatAndLong = new google.maps.LatLng(10.853127,106.626233);
 		var mapOptions = {
 			zoom : 10,
+		    zoomControl: true,
+		    zoomControlOptions: {
+		        style: google.maps.ZoomControlStyle.SMALL
+		      },
+		    mapTypeControl: true,
+		    mapTypeControlOptions: {
+		      style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR
+		    },
 			center : currentLocationLatAndLong,
 			mapTypeId : google.maps.MapTypeId.ROADMAP
 		};
 		var mapDiv = document.getElementById("map");
 		map = new google.maps.Map(mapDiv, mapOptions);
-
 	} catch (e) {
 		console.log("Error occured in ConsultantLocator.displayMap() " + e);
 	}
@@ -52,7 +59,6 @@ function displayError(error) {
 }
 function addMarker(latLng, title, contentString) {
 	console.log("Entering addMarker()");
-	
 	var markerOptions = new google.maps.Marker({
 		map : map,
 		position : latLng,
@@ -95,7 +101,9 @@ function getLatLangFromAddress(address) {
 			console.log("Address found is " + returnedValue);
 //			alert(returnedValue);
 			addMarker(returnedValue);
+			$.mobile.hidePageLoadingMsg();
 		} else {
+			$.mobile.hidePageLoadingMsg(); 
 			alert("Geocode was not successful for the following reason: "+ status);
 		}
 	});
@@ -103,6 +111,7 @@ function getLatLangFromAddress(address) {
 }
 
 function addMarkerForAddress() {
+	$.mobile.showPageLoadingMsg("b", "Loading...");
 	displayCurrentLocation();
 	console.log("Entering addMarkerForAddress()");
 	var address = $("#address").val();
