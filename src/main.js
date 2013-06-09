@@ -16,11 +16,12 @@
     	console.log("Exiting getLocation()");
     } */
 var map;
+var marker = new google.maps.Marker();
 function displayCurrentLocation() {
 	console.log("Entering displayCurrentLocation()");
 	createListItem();
 	try {
-		var currentLocationLatAndLong = new google.maps.LatLng(10.853127,106.626233);
+		var currentLocationLatAndLong = new google.maps.LatLng(10.853127,106.626233);// location at Binh Duong
 		var mapOptions = {
 			zoom : 10,
 		    zoomControl: true,
@@ -37,6 +38,8 @@ function displayCurrentLocation() {
 		var mapDiv = document.getElementById("map");
 		map = new google.maps.Map(mapDiv, mapOptions);
 	} catch (e) {
+		$.mobile.showPageLoadingMsg($.mobile.pageLoadErrorMessageTheme, "Lỗi kết nối mạng. Không thể hiển thị được Google Map", !0);
+		setTimeout($.mobile.hidePageLoadingMsg, 1500);
 		console.log("Error occured in ConsultantLocator.displayMap() " + e);
 	}
 	console.log("Exiting displayCurrentLocation()");
@@ -66,7 +69,7 @@ function addMarker(latLng, title, contentString) {
 	    animation: google.maps.Animation.DROP,
 		clickable : true
 	});
-	var marker = new google.maps.Marker(markerOptions);
+	marker.setOptions(markerOptions);
 	var infoWindowOptions = {
 		content : contentString,
 		position : latLng
@@ -100,7 +103,6 @@ function getLatLangFromAddress(address) {
 		if (status == google.maps.GeocoderStatus.OK) {
 			var returnedValue = results[0].geometry.location;
 			console.log("Address found is " + returnedValue);
-//			alert(returnedValue);
 			addMarker(returnedValue);
 			$.mobile.hidePageLoadingMsg();
 		} else {
@@ -112,7 +114,9 @@ function getLatLangFromAddress(address) {
 }
 
 function addMarkerForAddress() {
+	checkConnection();
 	$.mobile.showPageLoadingMsg("b", "Loading...");
+	setTimeout($.mobile.hidePageLoadingMsg, 30000);
 	displayCurrentLocation();
 	console.log("Entering addMarkerForAddress()");
 	var address = $("#address").val();
@@ -122,15 +126,9 @@ function addMarkerForAddress() {
 	addMarker(latLangForLocation, address, address);
 	console.log("Exiting addMarkerForAddress()");
 }
-//google.maps.event.addDomListener(window, 'load', displayCurrentLocation);
-//$('#p1').live('pagecreate', function(e){
-//    $("#searchToggle").click(function(e) {
-//        alert("hiihihih");
-//    });
-//});
 
 var turnOn = false;
-function test(){
+function toggleSearch(){
 	var searchToggle = $('#searchToggle');
 	var defaultSearchBoxHeight = $('#searchBox').height();
 	if(searchToggle){
@@ -138,23 +136,15 @@ function test(){
 		case true:
 			searchToggle.find('.ui-btn-text').text('Bật');
 				$('#searchBox').show('fast');
-//				$('#listView').slideUp('fast',function() {
-//					$('#listView').show();
-//				  });
-//				
 				$('#map').height($('#map').height() - defaultSearchBoxHeight); 
 				turnOn = false;
 			break;
 		case false:
 			searchToggle.find('.ui-btn-text').text('Tắt');
 				$('#searchBox').hide('fast');
-//				$('#listView').slideDown('fast',function() {
-//					$('#listView').hide();
-//				  });
 				$('#map').height($('#map').height() + defaultSearchBoxHeight);
 			turnOn = true; 
 			break;　
-
 		default:
 			break;
 		}
@@ -185,15 +175,36 @@ function createListItem(){
 	    	                html += '</span>';
 	    	            html += '</a>';
 	    	        html += '</div>';
-	    	        html += '<span class="ui-icon ui-icon-info ui-icon-shadow">&nbsp;</span></div></li>';
+	    	        html += '<span class="ui-icon ui-icon-info ui-icon-shadow">&nbsp;</span>';
+	    	   html += '</div>';
+	       html += '</li>';
 	    }
 	   document.getElementById("listView").innerHTML = html;
 }
 
 function focusMarkerOnMap(){
 	var currentLocationLatAndLong = new google.maps.LatLng(10.853127,106.626233);
+	displayCurrentLocation();
 	addMarker(currentLocationLatAndLong, null, null);
-//	alert("hhii");
 }
+
+function checkConnection() {
+    var networkState = navigator.connection.type;
+    var states = {};
+    states[Connection.UNKNOWN]  = 'Unknown connection';
+    states[Connection.ETHERNET] = 'Ethernet connection';
+    states[Connection.WIFI]     = 'WiFi connection';
+    states[Connection.CELL_2G]  = 'Cell 2G connection';
+    states[Connection.CELL_3G]  = 'Cell 3G connection';
+    states[Connection.CELL_4G]  = 'Cell 4G connection';
+    states[Connection.CELL]     = 'Cell generic connection';
+    states[Connection.NONE]     = 'No network connection';
+    if(states[networkState] == states[Connection.NONE] ){
+    	$.mobile.showPageLoadingMsg($.mobile.pageLoadErrorMessageTheme, "Không có kết nối mạng. Vui lòng kiểm tra lại.", !0);
+    	setTimeout($.mobile.hidePageLoadingMsg, 1500);
+    }
+}
+
+
 
 
