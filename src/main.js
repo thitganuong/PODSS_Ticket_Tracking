@@ -18,7 +18,7 @@
 var map;
 function displayCurrentLocation() {
 	console.log("Entering displayCurrentLocation()");
-	
+	createListItem();
 	try {
 		var currentLocationLatAndLong = new google.maps.LatLng(10.853127,106.626233);
 		var mapOptions = {
@@ -76,6 +76,7 @@ function addMarker(latLng, title, contentString) {
 		map.setCenter(marker.getPosition());
 		infoWindow.open(map, marker);
 	});
+	map.setCenter(marker.getPosition());
 	console.log("Exiting addMarker()");
 }
 
@@ -158,6 +159,41 @@ function test(){
 			break;
 		}
 	}
+}
+
+function createListItem(){
+	  var html = '';
+	  html += '<li data-role="list-divider" role="heading" class="ui-li ui-li-divider ui-bar-b ui-first-child">';
+	  	html += "Thông tin bưu gửi";
+	  html += '</li>';
+	    for (var i = 0; i < 10; i++) {
+	    	html += '<li onClick="focusMarkerOnMap()" data-theme="c" data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="info" data-iconpos="right" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-li-has-count ui-btn-up-c">';
+	    	    html += '<div class="ui-btn-inner ui-li">';
+	    	        html += '<div class="ui-btn-text">';
+	    	            html += '<div style="margin-left:5%; float:left">';
+	    	            	html+= "3:05:00AM"; //TODO: input data here
+	    	            html += '</div>';
+	    	            	
+	    	            html += '<div style="margin-left:4%">';
+	    	                html += "~ 5/06/2013"; //TODO: input data here
+	    	            html += '</div>';
+	    	            
+	    	            html += '<a href="#page1" data-transition="slide" class="ui-link-inherit">';
+	    	                html += "Nhận hàng tại Cây trâm Gò vấp"; //TODO: input data here
+	    	                html +=  '<span class="ui-li-count ui-btn-up-c ui-btn-corner-all">';
+	    	                	html += "Mới tạo"; //TODO: input data here
+	    	                html += '</span>';
+	    	            html += '</a>';
+	    	        html += '</div>';
+	    	        html += '<span class="ui-icon ui-icon-info ui-icon-shadow">&nbsp;</span></div></li>';
+	    }
+	   document.getElementById("listView").innerHTML = html;
+}
+
+function focusMarkerOnMap(){
+	var currentLocationLatAndLong = new google.maps.LatLng(10.853127,106.626233);
+	addMarker(currentLocationLatAndLong, null, null);
+//	alert("hhii");
 }
 
 
