@@ -19,7 +19,7 @@ var map;
 var marker = new google.maps.Marker();
 function displayCurrentLocation() {
 	console.log("Entering displayCurrentLocation()");
-	createListItem();
+//	createListItem();
 	try {
 		var currentLocationLatAndLong = new google.maps.LatLng(10.853127,106.626233);// location at Binh Duong
 		var mapOptions = {
@@ -105,8 +105,10 @@ function getLatLangFromAddress(address) {
 			console.log("Address found is " + returnedValue);
 			addMarker(returnedValue);
 			$.mobile.hidePageLoadingMsg();
+			createListItem();
 		} else {
 			$.mobile.hidePageLoadingMsg(); 
+			createItemInfo();
 			alert("Geocode was not successful for the following reason: "+ status);
 		}
 	});
@@ -179,6 +181,24 @@ function createListItem(){
 	    	   html += '</div>';
 	       html += '</li>';
 	    }
+	   document.getElementById("listView").innerHTML = html;
+}
+
+function createItemInfo(){
+	var html = '';
+	  html += '<li data-role="list-divider" role="heading" class="ui-li ui-li-divider ui-bar-b ui-first-child">';
+	  	html += "Thông tin bưu gửi";
+	  html += '</li>';
+	    	html += '<li data-theme="c" data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="info" data-iconpos="right" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-li-has-count ui-btn-up-c">';
+	    	    html += '<div class="ui-btn-inner ui-li">';
+	    	        html += '<div class="ui-btn-text">';
+	    	            html += '<a href="#page1" data-transition="slide" class="ui-link-inherit">';
+	    	                html += "Thông tin chưa có. Vui lòng nhập mã bưu gửi."; //TODO: input data here
+	    	            html += '</a>';
+	    	        html += '</div>';
+	    	        html += '<span class="ui-icon ui-icon-info ui-icon-shadow">&nbsp;</span>';
+	    	   html += '</div>';
+	       html += '</li>';
 	   document.getElementById("listView").innerHTML = html;
 }
 
