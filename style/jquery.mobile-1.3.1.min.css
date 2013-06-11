@@ -1309,7 +1309,7 @@ body.ui-mobile-viewport,div.ui-mobile-viewport {
 	text-align: center;
 	font-size: 16px;
 	display: block;
-	margin: .6em 27% .8em;
+	margin: .6em 27% .8em;  /*haint 27% 30% */
 	padding: 0;
 	text-overflow: ellipsis;
 	overflow: hidden;
@@ -1325,7 +1325,7 @@ body.ui-mobile-viewport,div.ui-mobile-viewport {
 	border-width: 0;
 	overflow: visible;
 	overflow-x: hidden;
-	padding: 0 0px 0px 0
+	padding: 0px 0px 0px 0px /* haint 0px  15px*/
 }
 
 .ui-corner-all>.ui-header:first-child,.ui-corner-all>.ui-content:first-child,.ui-corner-all>.ui-footer:first-child
@@ -2956,19 +2956,7 @@ scale
 }
 
 .ui-btn-inner {
-	font-size: 12px;
-	padding: .6em 20px;
-	min-width: .75em;
-	display: block;
-	position: relative;
-	text-overflow: ellipsis;
-	overflow: hidden;
-	white-space: nowrap;
-	zoom: 1
-}
-
-.ui-btn-innerListItem {
-	font-size: 7px;
+	font-size: 12px; /*haint 12px 16px  */
 	padding: .6em 20px;
 	min-width: .75em;
 	display: block;
@@ -3859,7 +3847,7 @@ label.ui-submit {
 }
 
 .ui-field-contain,fieldset.ui-field-contain {
-	padding: .3em 0;
+	padding: .3em 0; /*haint 3em 8em  */
 	margin: 0;
 	border-width: 0 0 1px;
 	overflow: visible
@@ -4187,7 +4175,7 @@ input[type=number]::-webkit-outer-spin-button {
 	}
 	.ui-field-contain input.ui-input-text,.ui-field-contain textarea.ui-input-text,.ui-field-contain .ui-input-search,.ui-field-contain div.ui-input-text
 		{
-		width: 100%;
+		width: 100%; /*haint 100% 78%  */
 		display: inline-block
 	}
 	.ui-field-contain .ui-input-search,.ui-field-contain div.ui-input-text {
