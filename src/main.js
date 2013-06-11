@@ -205,7 +205,7 @@ function createItemInfo(){
 function focusMarkerOnMap(){
 	var currentLocationLatAndLong = new google.maps.LatLng(10.853127,106.626233);
 	displayCurrentLocation();
-	addMarker(currentLocationLatAndLong, null, null);
+	addMarker(currentLocationLatAndLong, "Cay tram", "Go vap");
 }
 
 function checkConnection() {
