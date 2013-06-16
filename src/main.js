@@ -117,7 +117,7 @@ function getLatLangFromAddress(address) {
 
 function getListStatus(){
 	var model;
-//		if(checkConnection()){
+		if(checkConnection()){
 			if($("#address").val().length == 13 ){
 					$.mobile.hidePageLoadingMsg();
 					$.mobile.showPageLoadingMsg($.mobile.pageLoadErrorMessageTheme, "Đang tra mã bưu gửi. Vui lòng chờ.");
@@ -169,10 +169,10 @@ function getListStatus(){
 					setTimeout($.mobile.hidePageLoadingMsg, 3000);
 					return;
 				}
-//		} else{
-//			hideCustomerInfo();
-//			createItemInfo();
-//		}
+		} else{
+			hideCustomerInfo();
+			createItemInfo();
+		}
 }
 
 function hideCustomerInfo(){
