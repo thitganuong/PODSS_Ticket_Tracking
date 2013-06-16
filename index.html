@@ -23,13 +23,19 @@
 	 <script src="libs/iscroll.js"></script>
     <script src="libs/jquery.mobile.iscrollview.js"></script>
 
+	<script src="libs/pgDebug.js"></script>
 	<script src="http://maps.google.com/maps/api/js?sensor=true"></script>
 	<script type="text/javascript" charset="utf-8" src="src/main.js"></script>
 	<script type="text/javascript" charset="utf-8">
+	try{
 		google.maps.event.addDomListener(window, 'load', displayCurrentLocation);
+	}catch(e){
+	   alert("Lỗi kết nối mạng. Bạn không thể khởi động ứng dụng được.");
+	   navigator.app.exitApp();
+	}
 	</script>
 </head>
-<body>
+<body onload="hideCustomerInfo()">
 <!-- Home -->
 <div data-role="page" id="page1">
     <div id="header" data-theme="b" data-role="header" data-position="fixed">
@@ -43,7 +49,7 @@
         <div id="contentInput"data-role="fieldcontain" class="txt_SearchTicketID"">
             <input name="address" id="address"  placeholder="Mã bưu gửi mẫu: CP950141884VN" value="" type="search">
         </div>
-        <input id="btnSearch" style="font-size: 16px !important"type="button" id="getLocation" onclick="addMarkerForAddress()" value="Tra bưu gửi"/>
+        <input id="btnSearch" style="font-size: 16px !important"type="button" id="getLocation" onclick="getListStatus()" value="Tra bưu gửi"/>
         
     </div>
     <div>
@@ -84,23 +90,23 @@
     </div>
     <div data-role="content">
     
-		       <ul id="listView" data-role="listview" data-divider-theme="b" data-inset="true" style="margin-top: 5%" >
+		       <ul id="listViewSender" data-role="listview" data-divider-theme="b" data-inset="true" style="margin-top: 5%" >
 		            <li data-role="list-divider" role="heading">Thông tin khách hàng gửi</li>
 		            <li data-theme="c">
-		            	<div><h2>Tên: Nguyễn Thanh Hải</h2></div>
-		            	<div><h2>Địa chỉ: quận gò vấp</h2></div>
-		            	<div><h2>Điện thoại: 0933557706</h2></div> <br>
-		            	<div><h2>Số hiệu bưu kiện: CP950141884VN</h2></div>
+		            	<div id="se_name"><h2>Tên: Nguyễn Thanh Hải</h2></div>
+		            	<div id="se_address"><h2>Địa chỉ: quận gò vấp</h2></div>
+		            	<div id="se_phone"><h2>Điện thoại: 0933557706</h2></div> <br>
+		            	<div id="se_packagenum"><h2>Số hiệu bưu kiện: CP950141884VN</h2></div>
 		            </li>
 		        </ul>
 		        
-		        <ul id="listView" data-role="listview" data-divider-theme="b" data-inset="true" style="margin-top: 5%" >
+		        <ul id="listViewReciever" data-role="listview" data-divider-theme="b" data-inset="true" style="margin-top: 5%" >
 		            <li data-role="list-divider" role="heading">Thông tin khách hàng nhận</li>
 		            <li data-theme="c">
-		            	<div><h2>Tên: Nguyễn Trung Kiên</h2></div>
-		            	<div><h2>Địa chỉ: quận 10</h2></div>
-		            	<div><h2>Điện thoại: 0933557706</h2></div><br>
-		            	<div><h2>Khối lượng bưu kiện: 300gram</h2></div>
+		            	<div id="re_name"><h2>Tên: Nguyễn Trung Kiên</h2></div>
+		            	<div id="re_address"><h2>Địa chỉ: quận 10</h2></div>
+		            	<div id="re_phone"><h2>Điện thoại: 0933557706</h2></div><br>
+		            	<div id="re_weight"><h2>Khối lượng bưu kiện: 300gram</h2></div>
 		            </li>
 		        </ul>
 		            	<div data-role="content" data-icon="info" style="padding-left:5%; padding-right: 5% "><h5>Cảm ơn quý khách đã sử dụng dịch vụ của chúng tôi.</h5></div>

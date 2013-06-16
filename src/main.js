@@ -23,7 +23,7 @@ function displayCurrentLocation() {
 	try {
 		var currentLocationLatAndLong = new google.maps.LatLng(10.853127,106.626233);// location at Binh Duong
 		var mapOptions = {
-			zoom : 10,
+			zoom : 12,
 		    zoomControl: true,
 		    zoomControlOptions: {
 		        style: google.maps.ZoomControlStyle.SMALL
@@ -38,7 +38,7 @@ function displayCurrentLocation() {
 		var mapDiv = document.getElementById("map");
 		map = new google.maps.Map(mapDiv, mapOptions);
 	} catch (e) {
-		$.mobile.showPageLoadingMsg($.mobile.pageLoadErrorMessageTheme, "Lỗi kết nối mạng. Không thể hiển thị được Google Map", !0);
+		$.mobile.showPageLoadingMsg($.mobile.pageLoadErrorMessageTheme, "Lỗi kết nối mạng. Không thể load được Google Map", !0);
 		setTimeout($.mobile.hidePageLoadingMsg, 1500);
 		console.log("Error occured in ConsultantLocator.displayMap() " + e);
 	}
@@ -115,6 +115,76 @@ function getLatLangFromAddress(address) {
 	console.log("Exiting getLatLangFromAddress()");
 }
 
+function getListStatus(){
+	var model;
+		if(checkConnection()){
+			if($("#address").val().length == 13 ){
+					$.mobile.hidePageLoadingMsg();
+					$.mobile.showPageLoadingMsg($.mobile.pageLoadErrorMessageTheme, "Đang tra mã bưu gửi. Vui lòng chờ.");
+					$.ajax({
+						   url:'http://192.168.1.74:999/PODSSService.svc/android/getListTrackingPackage?goodAlias='+ $("#address").val(),
+						   success: function(result) {
+							   this.model = result;
+							   $.mobile.hidePageLoadingMsg();
+							   if(result.resultState == "Fail"){
+								   $.mobile.hidePageLoadingMsg();
+									hideCustomerInfo();
+									createItemInfo();
+									$.mobile.showPageLoadingMsg($.mobile.pageLoadErrorMessageTheme, "Không có thông tin mã bưu kiện. Vui lòng kiểm tra lại.", !0);
+									setTimeout($.mobile.hidePageLoadingMsg, 2000);
+								} else{
+								 //set data for sender information
+								 $("#se_name").text("Tên: " + this.model.sender.CustomerName);
+								 $("#se_address").text("Địa chỉ: " + this.model.sender.CustomerAddress);
+								 $("#se_phone").text("Điện thoại: " + this.model.sender.MobilePhone);
+								 $("#se_packagenum").text("Số hiệu bưu gửi: " + $("#address").val());
+								 
+								 //set data for reciever information
+								 $("#re_name").text("Tên: " + this.model.receiver.CustomerName);
+								 $("#re_address").text("Địa chỉ: " + this.model.receiver.CustomerAddress);
+								 $("#re_phone").text("Điện thoại: " + this.model.receiver.MobilePhone);
+								 $("#re_weight").text("Khối lượng bưu kiện: " + this.model.Weight + " kg");
+								 createListItem(this.model);
+								 showCustomerInfo();
+								}
+						   },
+							error: function(result){
+								$.mobile.hidePageLoadingMsg();
+								hideCustomerInfo();
+								createItemInfo();
+								$.mobile.showPageLoadingMsg($.mobile.pageLoadErrorMessageTheme, "Lỗi kết nối. Vui lòng kiểm tra lại.", !0);
+								setTimeout($.mobile.hidePageLoadingMsg, 2000);
+							},
+						});
+				} else{
+					var errorMessage = "";
+					if($("#address").val().length == 0){
+						errorMessage = "Vui lòng nhập mã bưu kiện!";
+					} else if($("#address").val().length < 13){
+						errorMessage = "Độ dài mã bưu kiện ngắn hơn 13 kí tự. Vui lòng kiểm tra lại.";
+					} else{
+						errorMessage = "Độ dài mã bưu kiện dài hơn 13 kí tự. Vui lòng kiểm tra lại.";
+					}
+					$.mobile.showPageLoadingMsg($.mobile.pageLoadErrorMessageTheme, errorMessage, !0);
+					setTimeout($.mobile.hidePageLoadingMsg, 3000);
+					return;
+				}
+		} else{
+			hideCustomerInfo();
+			createItemInfo();
+		}
+}
+
+function hideCustomerInfo(){
+	$('#listViewSender').hide();
+	$('#listViewReciever').hide();
+}
+
+function showCustomerInfo(){
+	$('#listViewSender').show();
+	$('#listViewReciever').show();
+}
+
 function addMarkerForAddress() {
 	checkConnection();
 	$.mobile.showPageLoadingMsg("b", "Loading...");
@@ -146,34 +216,32 @@ function toggleSearch(){
 				$('#searchBox').hide('fast');
 				$('#map').height($('#map').height() + defaultSearchBoxHeight);
 			turnOn = true; 
-			break;　
+			break;
 		default:
 			break;
 		}
 	}
 }
 
-function createListItem(){
+function createListItem(model){
 	  var html = '';
 	  html += '<li data-role="list-divider" role="heading" class="ui-li ui-li-divider ui-bar-b ui-first-child">';
 	  	html += "Thông tin bưu gửi";
 	  html += '</li>';
-	    for (var i = 0; i < 10; i++) {
-	    	html += '<li onClick="focusMarkerOnMap()" data-theme="c" data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="info" data-iconpos="right" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-li-has-count ui-btn-up-c">';
+	    for (var i = 0; i < model.activity_list.length; i++) {
+	    	html += '<li onClick="focusMarkerOnMap(' + model.activity_list[i].PosX + "," + model.activity_list[i].PosY + ')" data-theme="c" data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="info" data-iconpos="right" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-li-has-count ui-btn-up-c">';
 	    	    html += '<div class="ui-btn-inner ui-li">';
 	    	        html += '<div class="ui-btn-text">';
 	    	            html += '<div style="margin-left:5%; float:left">';
-	    	            	html+= "3:05:00AM"; //TODO: input data here
+	    	            	html+= model.activity_list[i].formatted_date; //TODO: input data here
 	    	            html += '</div>';
-	    	            	
 	    	            html += '<div style="margin-left:4%">';
-	    	                html += "~ 5/06/2013"; //TODO: input data here
+	    	                html += "."; //TODO: input data here
 	    	            html += '</div>';
-	    	            
 	    	            html += '<a href="#page1" data-transition="slide" class="ui-link-inherit">';
-	    	                html += "Nhận hàng tại Cây trâm Gò vấp"; //TODO: input data here
+	    	                html += model.activity_list[i].ActivityAddress; //TODO: input data here
 	    	                html +=  '<span class="ui-li-count ui-btn-up-c ui-btn-corner-all">';
-	    	                	html += "Mới tạo"; //TODO: input data here
+	    	                	html += model.activity_list[i].StatusN; //TODO: input data here
 	    	                html += '</span>';
 	    	            html += '</a>';
 	    	        html += '</div>';
@@ -193,7 +261,7 @@ function createItemInfo(){
 	    	    html += '<div class="ui-btn-inner ui-li">';
 	    	        html += '<div class="ui-btn-text">';
 	    	            html += '<a href="#page1" data-transition="slide" class="ui-link-inherit">';
-	    	                html += "Thông tin chưa có. Vui lòng nhập mã bưu gửi."; //TODO: input data here
+	    	                html += "Thông tin bưu gửi chưa có. Vui lòng nhập mã bưu gửi."; //TODO: input data here
 	    	            html += '</a>';
 	    	        html += '</div>';
 	    	        html += '<span class="ui-icon ui-icon-info ui-icon-shadow">&nbsp;</span>';
@@ -202,10 +270,10 @@ function createItemInfo(){
 	   document.getElementById("listView").innerHTML = html;
 }
 
-function focusMarkerOnMap(){
-	var currentLocationLatAndLong = new google.maps.LatLng(10.853127,106.626233);
+function focusMarkerOnMap(posX, posY){
+	var currentLocationLatAndLong = new google.maps.LatLng(posX,posY);
 	displayCurrentLocation();
-	addMarker(currentLocationLatAndLong, "Cay tram", "Go vap");
+	addMarker(currentLocationLatAndLong);
 }
 
 function checkConnection() {
@@ -221,9 +289,14 @@ function checkConnection() {
     states[Connection.NONE]     = 'No network connection';
     if(states[networkState] == states[Connection.NONE] ){
     	$.mobile.showPageLoadingMsg($.mobile.pageLoadErrorMessageTheme, "Không có kết nối mạng. Vui lòng kiểm tra lại.", !0);
-    	setTimeout($.mobile.hidePageLoadingMsg, 1500);
+    	setTimeout($.mobile.hidePageLoadingMsg, 3000); 
+    	return false;
+    } else{
+//    	window.location.reload();
+    	return true;
     }
 }
+
 
 
 
