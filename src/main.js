@@ -122,7 +122,7 @@ function getListStatus(){
 					$.mobile.hidePageLoadingMsg();
 					$.mobile.showPageLoadingMsg($.mobile.pageLoadErrorMessageTheme, "Đang tra mã bưu gửi. Vui lòng chờ.");
 					$.ajax({
-						   url:'http://192.168.1.74:999/PODSSService.svc/android/getListTrackingPackage?goodAlias='+ $("#address").val(),
+						   url:'http://192.168.1.5:999/PODSSService.svc/android/getListTrackingPackage?goodAlias='+ $("#address").val(),
 						   success: function(result) {
 							   this.model = result;
 							   $.mobile.hidePageLoadingMsg();
@@ -133,6 +133,15 @@ function getListStatus(){
 									$.mobile.showPageLoadingMsg($.mobile.pageLoadErrorMessageTheme, "Không có thông tin mã bưu kiện. Vui lòng kiểm tra lại.", !0);
 									setTimeout($.mobile.hidePageLoadingMsg, 2000);
 								} else{
+									var searchToggle = $('#searchToggle');
+									var defaultSearchBoxHeight = $('#searchBox').height();
+									
+								   searchToggle.find('.ui-btn-text').text('Tắt');
+									$('#searchBox').hide('fast');
+									$('#map').height($('#map').height() + defaultSearchBoxHeight);
+								turnOn = true; 
+									
+									
 								 //set data for sender information
 								 $("#se_name").text("Tên: " + this.model.sender.CustomerName);
 								 $("#se_address").text("Địa chỉ: " + this.model.sender.CustomerAddress);
