@@ -17,13 +17,15 @@
        specific language governing permissions and limitations
        under the License.
 -->
-<cordova>
-    <!--
-    access elements control the Android whitelist.
-    Domains are assumed blocked unless set otherwise
-     -->
-     
-     <name>Package Tracking</name>
+<widget xmlns = "http://www.w3.org/ns/widgets"
+        xmlns:gap = "http://phonegap.com/ns/1.0"
+        id        = "com.phonegap.example"
+        versionCode="10" 
+        version   = "2.0.0">
+
+    <!-- versionCode is optional and Android only -->
+
+   <name>Package Tracking</name>
 
     <description>
         This is a mobile application used for tracking customers's package through PODSS.
@@ -32,6 +34,15 @@
     <author href="http://www.facebook.com/HaiNguyen.MobileDeveloper" email="androidcoder.vn@gmail.com">
         Nguyễn Thanh Hải
 	</author>
+
+</widget>
+<cordova>
+    <!--
+    access elements control the Android whitelist.
+    Domains are assumed blocked unless set otherwise
+     -->
+     
+     
 
     <access origin="http://127.0.0.1*"/> <!-- allow local pages -->
 
