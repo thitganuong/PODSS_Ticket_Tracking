@@ -28,7 +28,7 @@
         Tra gói hàng của bạn mọi lúc mọi nơi.
     </description>
 
-    <author href="http://phonegap.com" email="support@phonegap.com">
+    <author href="http://www.facebook.com/HaiNguyen.MobileDeveloper" email="androidcoder.vn@gmail.comå">
          Nguyễn Thanh Hải
     </author>
 
@@ -55,8 +55,6 @@
     <icon src="res/icon/android/icon-48-mdpi.png"   gap:platform="android"    gap:density="mdpi" />
     <icon src="res/icon/android/icon-72-hdpi.png"   gap:platform="android"    gap:density="hdpi" />
     <icon src="res/icon/android/icon-96-xhdpi.png"  gap:platform="android"    gap:density="xhdpi" />
-    <icon src="res/icon/blackberry/icon-80.png"     gap:platform="blackberry" />
-    <icon src="res/icon/blackberry/icon-80.png"     gap:platform="blackberry" gap:state="hover"/>
     <icon src="res/icon/ios/icon-57.png"            gap:platform="ios"        width="57" height="57" />
     <icon src="res/icon/ios/icon-72.png"            gap:platform="ios"        width="72" height="72" />
     <icon src="res/icon/ios/icon-57-2x.png"         gap:platform="ios"        width="114" height="114" />
@@ -87,9 +85,7 @@
     <preference name="exit-on-suspend" value="false" />
     <preference name="orientation" value="portrait" />
     <preference name="auto-hide-splash-screen" value="false" />
-    <icon src="icon.png" />
     
-    <feature name="http://api.phonegap.com/1.0/device" />
     
 <plugins>
     <plugin name="App" value="org.apache.cordova.App"/>
