@@ -17,16 +17,8 @@
        specific language governing permissions and limitations
        under the License.
 -->
-<widget xmlns = "http://www.w3.org/ns/widgets"
-        xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "com.phonegap.example"
-        versionCode="10" 
-        version   = "2.0.0">
-
-    <!-- versionCode is optional and Android only -->
-
+<widget>
    <name>Package Tracking</name>
-
     <description>
         This is a mobile application used for tracking customers's package through PODSS.
     </description>
@@ -41,9 +33,6 @@
     access elements control the Android whitelist.
     Domains are assumed blocked unless set otherwise
      -->
-     
-     
-
     <access origin="http://127.0.0.1*"/> <!-- allow local pages -->
 
     <!-- <access origin="https://example.com" /> allow any secure requests to example.com -->
