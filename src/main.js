@@ -18,7 +18,6 @@
 var map;
 var marker = new google.maps.Marker();
 function displayCurrentLocation() {
-	console.log("Entering displayCurrentLocation()");
 //	createListItem();
 	try {
 		var currentLocationLatAndLong = new google.maps.LatLng(10.853127,106.626233);// location at Binh Duong
@@ -122,7 +121,7 @@ function getListStatus(){
 					$.mobile.hidePageLoadingMsg();
 					$.mobile.showPageLoadingMsg($.mobile.pageLoadErrorMessageTheme, "Đang tra mã bưu gửi. Vui lòng chờ.");
 					$.ajax({
-						   url:'http://192.168.1.5:999/PODSSService.svc/android/getListTrackingPackage?goodAlias='+ $("#address").val(),
+						   url:'http://192.168.43.113:999/PODSSService.svc/android/getListTrackingPackage?goodAlias='+ $("#address").val(),
 						   success: function(result) {
 							   this.model = result;
 							   $.mobile.hidePageLoadingMsg();
