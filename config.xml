@@ -36,7 +36,7 @@
     <preference name="exit-on-suspend" value="false" />
     <preference name="orientation" value="portrait" />
     <preference name="auto-hide-splash-screen" value="false" />
-    <icon src="icon/icon.png" />
+    <icon src="icon.png" />
     
 <plugins>
     <plugin name="App" value="org.apache.cordova.App"/>
