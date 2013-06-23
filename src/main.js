@@ -122,7 +122,7 @@ function getListStatus(){
 					$.mobile.hidePageLoadingMsg();
 					$.mobile.showPageLoadingMsg($.mobile.pageLoadErrorMessageTheme, "Đang tra mã bưu gửi. Vui lòng chờ.");
 					$.ajax({
-						   url:'http://192.168.43.113:999/PODSSService.svc/android/getListTrackingPackage?goodAlias='+ $("#address").val(),
+						   url:'http://192.168.1.13:999/PODSSService.svc/android/getListTrackingPackage?goodAlias='+ $("#address").val(),
 						   success: function(result) {
 							   this.model = result;
 							   $.mobile.hidePageLoadingMsg();
@@ -248,7 +248,7 @@ function createListItem(model){
 	    	                html += "."; //TODO: input data here
 	    	            html += '</div>';
 	    	            html += '<a href="#page1" data-transition="slide" class="ui-link-inherit">';
-	    	                html += model.activity_list[i].ActivityAddress; //TODO: input data here
+	    	                html += decodeURIComponent(model.activity_list[i].ActivityAddress); //TODO: input data here
 	    	                html +=  '<span class="ui-li-count ui-btn-up-c ui-btn-corner-all">';
 	    	                	html += model.activity_list[i].StatusN; //TODO: input data here
 	    	                html += '</span>';
