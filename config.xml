@@ -17,17 +17,6 @@
        specific language governing permissions and limitations
        under the License.
 -->
-<widget>
-   <name>Package Tracking</name>
-    <description>
-        This is a mobile application used for tracking customers's package through PODSS.
-    </description>
-
-    <author href="http://www.facebook.com/HaiNguyen.MobileDeveloper" email="androidcoder.vn@gmail.com">
-        Nguyễn Thanh Hải
-	</author>
-
-</widget>
 <cordova>
     <!--
     access elements control the Android whitelist.
