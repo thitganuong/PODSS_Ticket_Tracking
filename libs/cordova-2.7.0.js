@@ -4158,7 +4158,7 @@ module.exports = {
         prompt(value, 'gap_bridge_mode:');
     },
     retrieveJsMessages: function() {
-        return null;// prompt('', 'gap_poll:');
+        return  prompt('', 'gap_poll:');
     }
 };
 

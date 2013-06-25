@@ -19,11 +19,9 @@ var map;
 var marker = new google.maps.Marker();
 function displayCurrentLocation() {
 	console.log("Entering displayCurrentLocation()");
-	alert("Entering displayCurrentLocation()");
 //	createListItem();
 	try {
 		var currentLocationLatAndLong = new google.maps.LatLng(10.853127,106.626233);// location at Binh Duong
-		alert("tạo point");
 		var mapOptions = {
 			zoom : 12,
 		    zoomControl: true,
@@ -37,11 +35,8 @@ function displayCurrentLocation() {
 			center : currentLocationLatAndLong,
 			mapTypeId : google.maps.MapTypeId.ROADMAP
 		};
-		alert("tạo mapoption");
 		var mapDiv = document.getElementById("map");
-		alert("tạo mapdiv");
 		map = new google.maps.Map(mapDiv, mapOptions);
-		alert("tạo map final");
 	} catch (e) {
 		$.mobile.showPageLoadingMsg($.mobile.pageLoadErrorMessageTheme, "Lỗi kết nối mạng. Không thể load được Google Map", !0);
 		setTimeout($.mobile.hidePageLoadingMsg, 1500);
