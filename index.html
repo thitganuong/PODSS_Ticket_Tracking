@@ -29,7 +29,6 @@
 	<script type="text/javascript" charset="utf-8">
 	try{
 		  /* google.maps.event.addDomListener(window, 'load', displayCurrentLocation); */ 
-		displayCurrentLocation();
 		
 	}catch(e){
 	   /* alert("Lỗi kết nối mạng. Bạn không thể khởi động ứng dụng được."); */
@@ -38,7 +37,7 @@
 	}
 	</script>
 </head>
-<body onload="hideCustomerInfo()">
+<body onload="hideCustomerInfo();displayCurrentLocation()">
 <!-- Home -->
 <div data-role="page" id="page1">
     <div id="header" data-theme="b" data-role="header" data-position="fixed">
