@@ -36,7 +36,7 @@ function displayCurrentLocation() {
 			mapTypeId : google.maps.MapTypeId.ROADMAP
 		};
 		var mapDiv = document.getElementById("map");
-		map = new google.maps.Map(mapDiv, mapOptions);
+		var map = new google.maps.Map(mapDiv, mapOptions);
 	} catch (e) {
 		$.mobile.showPageLoadingMsg($.mobile.pageLoadErrorMessageTheme, "Lỗi kết nối mạng. Không thể load được Google Map", !0);
 		setTimeout($.mobile.hidePageLoadingMsg, 1500);
