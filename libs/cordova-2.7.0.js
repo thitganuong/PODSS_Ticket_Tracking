@@ -1089,6 +1089,7 @@ exports.mapModules = function(context) {
     }
 };
 
+
 exports.getOriginalSymbol = function(context, symbolPath) {
     var origSymbols = context.CDV_origSymbols;
     if (origSymbols && (symbolPath in origSymbols)) {
@@ -4157,7 +4158,7 @@ module.exports = {
         prompt(value, 'gap_bridge_mode:');
     },
     retrieveJsMessages: function() {
-        return prompt('', 'gap_poll:');
+        return null;// prompt('', 'gap_poll:');
     }
 };
 
