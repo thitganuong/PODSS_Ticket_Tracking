@@ -69,6 +69,19 @@
 
         Otherwise, you can specify specific domains:
     -->
+    <access origin="http://code.jquery.com"/>
+    <access origin="*"/>
+    <access origin="mt0.googleapis.com"/>
+    <access origin="mt1.googleapis.com"/>
+    <access origin="csi.gstatic.com"/>
+    <access origin="maps.gstatic.com"/>
+    <access origin="maps.googleapis.com"/>
+    
+
+
+
+
+    
     <access origin=".*"/>
     
     <access origin="http://127.0.0.1*"/> <!-- allow local pages -->
