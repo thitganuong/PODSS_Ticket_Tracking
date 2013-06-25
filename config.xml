@@ -69,6 +69,8 @@
 
         Otherwise, you can specify specific domains:
     -->
+    <access origin="http://127.0.0.1*"/> <!-- allow local pages -->
+    <access origin=".*"/>
     <access origin="http://code.jquery.com"/>
     <access origin="*"/>
     <access origin="mt0.googleapis.com"/>
@@ -82,9 +84,7 @@
 
 
     
-    <access origin=".*"/>
     
-    <access origin="http://127.0.0.1*"/> <!-- allow local pages -->
     <!--
         <access origin="http://phonegap.com" />                    - allow any secure requests to http://phonegap.com/
         <access origin="http://phonegap.com" subdomains="true" />  - same as above, but including subdomains, such as http://build.phonegap.com/
@@ -97,7 +97,7 @@
     <preference name="exit-on-suspend" value="false" />
     <preference name="orientation" value="portrait" />
     <preference name="auto-hide-splash-screen" value="false" />
-    <preference name="phonegap-version" value="2.9.0rc1-0-g002f33d" /> 
+    <preference name="phonegap-version" value="2.7.0" /> 
     
 <plugins>
     <plugin name="App" value="org.apache.cordova.App"/>
