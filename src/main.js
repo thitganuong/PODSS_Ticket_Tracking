@@ -122,7 +122,7 @@ function getListStatus(){
 					$.mobile.hidePageLoadingMsg();
 					$.mobile.showPageLoadingMsg($.mobile.pageLoadErrorMessageTheme, "Đang tra mã bưu gửi. Vui lòng chờ.");
 					$.ajax({
-						   url:'http://192.168.1.13:999/PODSSService.svc/android/getListTrackingPackage?goodAlias='+ $("#address").val(),
+						   url:'http://192.168.1.2:999/PODSSService.svc/android/getListTrackingPackage?goodAlias='+ $("#address").val(),
 						   success: function(result) {
 							   this.model = result;
 							   $.mobile.hidePageLoadingMsg();
@@ -143,14 +143,14 @@ function getListStatus(){
 									
 									
 								 //set data for sender information
-								 $("#se_name").text("Tên: " + this.model.sender.CustomerName);
-								 $("#se_address").text("Địa chỉ: " + this.model.sender.CustomerAddress);
+								 $("#se_name").text("Tên: " + decodeURIComponent( this.model.sender.CustomerName));
+								 $("#se_address").text("Địa chỉ: " + decodeURIComponent(this.model.sender.CustomerAddress));
 								 $("#se_phone").text("Điện thoại: " + this.model.sender.MobilePhone);
 								 $("#se_packagenum").text("Số hiệu bưu gửi: " + $("#address").val());
 								 
 								 //set data for reciever information
-								 $("#re_name").text("Tên: " + this.model.receiver.CustomerName);
-								 $("#re_address").text("Địa chỉ: " + this.model.receiver.CustomerAddress);
+								 $("#re_name").text("Tên: " + decodeURIComponent(this.model.receiver.CustomerName));
+								 $("#re_address").text("Địa chỉ: " + decodeURIComponent(this.model.receiver.CustomerAddress));
 								 $("#re_phone").text("Điện thoại: " + this.model.receiver.MobilePhone);
 								 $("#re_weight").text("Khối lượng bưu kiện: " + this.model.Weight + " kg");
 								 createListItem(this.model);
@@ -241,13 +241,13 @@ function createListItem(model){
 	    	html += '<li onClick="focusMarkerOnMap(' + model.activity_list[i].PosX + "," + model.activity_list[i].PosY + ')" data-theme="c" data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="info" data-iconpos="right" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-li-has-count ui-btn-up-c">';
 	    	    html += '<div class="ui-btn-inner ui-li">';
 	    	        html += '<div class="ui-btn-text">';
-	    	            html += '<div style="margin-left:5%; float:left">';
+	    	            html += '<div style="margin-left:5%; float:left; margin-top:1%">';
 	    	            	html+= model.activity_list[i].formatted_date; //TODO: input data here
 	    	            html += '</div>';
 	    	            html += '<div style="margin-left:4%">';
 	    	                html += "."; //TODO: input data here
 	    	            html += '</div>';
-	    	            html += '<a href="#page1" data-transition="slide" class="ui-link-inherit">';
+	    	            html += '<a href="#page1" data-transition="slide" class="ui-link-inherit" style="margin-top:2%">';
 	    	                html += decodeURIComponent(model.activity_list[i].ActivityAddress); //TODO: input data here
 	    	                html +=  '<span class="ui-li-count ui-btn-up-c ui-btn-corner-all">';
 	    	                	html += model.activity_list[i].StatusN; //TODO: input data here
