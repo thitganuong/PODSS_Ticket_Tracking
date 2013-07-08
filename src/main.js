@@ -122,7 +122,7 @@ function getListStatus(){
 					$.mobile.hidePageLoadingMsg();
 					$.mobile.showPageLoadingMsg($.mobile.pageLoadErrorMessageTheme, "Đang tra mã bưu gửi. Vui lòng chờ.");
 					$.ajax({
-						   url:'http://192.168.1.2:999/PODSSService.svc/android/getListTrackingPackage?goodAlias='+ $("#address").val(),
+						   url:'http://192.168.0.101:999/PODSSService.svc/android/getListTrackingPackage?goodAlias='+ $("#address").val(),
 						   success: function(result) {
 							   this.model = result;
 							   $.mobile.hidePageLoadingMsg();
@@ -152,7 +152,7 @@ function getListStatus(){
 								 $("#re_name").text("Tên: " + decodeURIComponent(this.model.receiver.CustomerName));
 								 $("#re_address").text("Địa chỉ: " + decodeURIComponent(this.model.receiver.CustomerAddress));
 								 $("#re_phone").text("Điện thoại: " + this.model.receiver.MobilePhone);
-								 $("#re_weight").text("Khối lượng bưu kiện: " + this.model.Weight + " kg");
+								 $("#re_weight").text("Khối lượng bưu kiện: " + this.model.Weight + " gram");
 								 createListItem(this.model);
 								 showCustomerInfo();
 								}
@@ -248,7 +248,7 @@ function createListItem(model){
 	    	                html += "."; //TODO: input data here
 	    	            html += '</div>';
 	    	            html += '<a href="#page1" data-transition="slide" class="ui-link-inherit" style="margin-top:2%">';
-	    	                html += decodeURIComponent(model.activity_list[i].ActivityAddress); //TODO: input data here
+	    	                html += decodeURIComponent(model.activity_list[i].ActivityAddress)== "null" ? "Tại bưu cục":decodeURIComponent(model.activity_list[i].ActivityAddress); //TODO: input data here
 	    	                html +=  '<span class="ui-li-count ui-btn-up-c ui-btn-corner-all">';
 	    	                	html += model.activity_list[i].StatusN; //TODO: input data here
 	    	                html += '</span>';
