@@ -122,7 +122,7 @@ function getListStatus(){
 					$.mobile.hidePageLoadingMsg();
 					$.mobile.showPageLoadingMsg($.mobile.pageLoadErrorMessageTheme, "Đang tra mã bưu gửi. Vui lòng chờ.");
 					$.ajax({
-						   url:'http://192.168.0.101:999/PODSSService.svc/android/getListTrackingPackage?goodAlias='+ $("#address").val(),
+						   url:'http://podss.somee.com/PODSSService/PODSSService.svc/android/getListTrackingPackage?goodAlias='+ $("#address").val(),
 						   success: function(result) {
 							   this.model = result;
 							   $.mobile.hidePageLoadingMsg();
